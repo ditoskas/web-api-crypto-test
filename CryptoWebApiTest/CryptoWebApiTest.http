@@ -1,0 +1,6 @@
+@CryptoWebApiTest_HostAddress = http://localhost:5047
+
+GET {{CryptoWebApiTest_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
