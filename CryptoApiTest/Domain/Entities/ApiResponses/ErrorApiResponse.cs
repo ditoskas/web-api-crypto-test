@@ -2,7 +2,7 @@
 {
     public class ErrorApiResponse : BaseApiResponse
     {
-        public ErrorApiResponse(string message = "") : base(false, message, null)
+        public ErrorApiResponse(object? data = null, string? message = "") : base(false, data, message)
         {
         }
     }

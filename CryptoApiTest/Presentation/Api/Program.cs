@@ -1,6 +1,8 @@
 using Api;
 using Api.ContextFactory;
 using Api.Extensions;
+using CryptoApi.Presentation.ActionFilters;
+using Microsoft.AspNetCore.Mvc;
 using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,12 @@ builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqliteContext(RepositoryContextFactory.GetConnectionString());
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
+builder.Services.AddScoped<ValidationFilterAttribute>();
 
 builder.Services.AddControllers(config =>
 {

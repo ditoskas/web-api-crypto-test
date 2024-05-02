@@ -5,7 +5,7 @@ namespace Entities.ApiResponses
 {
     public abstract class BaseApiResponse
     {
-        public BaseApiResponse(bool isSuccess, string? message = "", object? data = null)
+        public BaseApiResponse(bool isSuccess, object? data = null, string? message = "")
         {
             IsSuccess = isSuccess;
             Message = message;
