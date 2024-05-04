@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Specialized;
 
 namespace Utilities
 {
@@ -17,6 +18,11 @@ namespace Utilities
         public static T? DeserializeObjectSnakeCase<T>(string value)
         {
             return JsonConvert.DeserializeObject<T>(value, SnakeCaseSettings);
+        }
+
+        public static string SerializeObject(object obj, JsonSerializerSettings settings = null)
+        {
+            return JsonConvert.SerializeObject(obj, settings);
         }
     }
 }

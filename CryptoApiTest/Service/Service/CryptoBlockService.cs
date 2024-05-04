@@ -4,6 +4,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObject;
+using Shared.RequestFeatures;
 using System.ComponentModel.Design;
 
 namespace Service
@@ -55,6 +56,13 @@ namespace Service
             CryptoNetwork cryptoNetwork = await GetCryptoNetworkIfExists(cryptoNetworkId, false);
             var block = await _repository.CryptoBlock.GetLastCryptoBlockOfNetworkAsync(cryptoNetworkId, false);
             return _mapper.Map<CryptoBlockDto>(block);
+        }
+
+        public async Task<CryptoBlockWithMetaDataDto> GetCryptoBlocksAsync(CryptoBlockParameters cryptoBlockParameters)
+        {
+            var cryptoBlocks = await _repository.CryptoBlock.GetCryptoBlocksAsync(cryptoBlockParameters, false);
+            var cryptoBlocksDto = _mapper.Map<IEnumerable<CryptoBlockDto>>(cryptoBlocks);
+            return new CryptoBlockWithMetaDataDto(cryptoBlocksDto, cryptoBlocks.MetaData);
         }
 
         private async Task<CryptoNetwork> GetCryptoNetworkIfExists(long cryptoNetworkId, bool trackChanges)

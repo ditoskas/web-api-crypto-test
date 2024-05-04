@@ -4,6 +4,7 @@
     {
         public static string GetBaseUrl()
         {
+            //string token = ConfigurationManager.AppSettings["BlockCypherToken"];
             return $"https://api.blockcypher.com/v1";
         }
 

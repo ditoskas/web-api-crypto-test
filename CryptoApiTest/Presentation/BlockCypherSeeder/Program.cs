@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BlockCypherSeeder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Service.Contracts;
@@ -35,7 +36,6 @@ if (args.Length > 2 && int.TryParse(args[2], out int readRecords))
     recordsToRead = readRecords;
 }
 string action = args.Length > 3 ? args[3] : "seed";
-
 // Seed the database
 using IHost host = builder.Build();
 IMapper mapper = host.Services.GetRequiredService<IMapper>();
