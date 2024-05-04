@@ -15,13 +15,13 @@ namespace Api.Migrations
         {
             migrationBuilder.InsertData(
                 table: "Cryptos",
-                columns: new[] { "CryptoId", "CreatedAt", "Description", "Symbol", "UpdatedAt" },
+                columns: new[] { "CryptoId", "CreatedAt", "Description", "Symbol" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2024, 4, 30, 7, 26, 51, 638, DateTimeKind.Utc).AddTicks(5946), "Bitcoin", "BTC", null },
-                    { 2L, new DateTime(2024, 4, 30, 7, 26, 51, 638, DateTimeKind.Utc).AddTicks(5948), "Ethereum", "ETH", null },
-                    { 3L, new DateTime(2024, 4, 30, 7, 26, 51, 638, DateTimeKind.Utc).AddTicks(5949), "Litecoin", "LTC", null },
-                    { 4L, new DateTime(2024, 4, 30, 7, 26, 51, 638, DateTimeKind.Utc).AddTicks(5950), "Dash", "Dash", null }
+                    { 1L, new DateTime(2024, 4, 30, 7, 26, 51, 638, DateTimeKind.Utc).AddTicks(5946), "Bitcoin", "BTC" },
+                    { 2L, new DateTime(2024, 4, 30, 7, 26, 51, 638, DateTimeKind.Utc).AddTicks(5948), "Ethereum", "ETH" },
+                    { 3L, new DateTime(2024, 4, 30, 7, 26, 51, 638, DateTimeKind.Utc).AddTicks(5949), "Litecoin", "LTC" },
+                    { 4L, new DateTime(2024, 4, 30, 7, 26, 51, 638, DateTimeKind.Utc).AddTicks(5950), "Dash", "Dash" }
                 });
         }
 

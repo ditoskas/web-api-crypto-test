@@ -18,7 +18,6 @@ namespace CryptoApi.Presentation.Controllers
         public async Task<IActionResult> GetCryptos()
         {
             var cryptos = await _service.CryptoService.GetAllCryptosAsync(false);
-
             return new OkApiResult(cryptos);
         }
 

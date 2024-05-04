@@ -1,9 +1,4 @@
 ﻿using Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repository
 {
@@ -11,15 +6,22 @@ namespace Repository
     {
         private readonly RepositoryContext _repositoryContext;
         private readonly Lazy<ICryptoRepository> _cryptoRepository;
+        private readonly Lazy<ICryptoNetworkRepository> _cryptoNetworkRepository;
+        private readonly Lazy<ICryptoBlockRepository> _cryptoBlockRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
             _cryptoRepository = new Lazy<ICryptoRepository>(() => new CryptoRepository(repositoryContext));
+            _cryptoNetworkRepository = new Lazy<ICryptoNetworkRepository>(() => new CryptoNetworkRepository(repositoryContext));
+            _cryptoBlockRepository = new Lazy<ICryptoBlockRepository>(() => new CryptoBlockRepository(repositoryContext));
 
         }
 
         public ICryptoRepository Crypto => _cryptoRepository.Value;
+        public ICryptoNetworkRepository CryptoNetwork => _cryptoNetworkRepository.Value;
+
+        public ICryptoBlockRepository CryptoBlock => _cryptoBlockRepository.Value;
 
         public async Task SaveAsync() => await _repositoryContext.SaveChangesAsync();
     }

@@ -1,7 +1,6 @@
 ﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Repository.Configuration;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Repository
 {
@@ -14,10 +13,15 @@ namespace Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CryptoConfiguration());
+            modelBuilder.ApplyConfiguration(new CryptoNetworkConfiguration());
         }
 
 
         public DbSet<Crypto>? Cryptos { get; set; }
+        public DbSet<CryptoNetwork>? CryptoNetworks { get; set; }
+        public DbSet<CryptoBlock>? CryptoBlocks { get; set; }
+        public DbSet<CryptoTransaction>? CryptoTransactions { get; set; }
+        public DbSet<CryptoInternalTransaction>? CryptoInternalTransactions { get; set; }
 
     }
 }

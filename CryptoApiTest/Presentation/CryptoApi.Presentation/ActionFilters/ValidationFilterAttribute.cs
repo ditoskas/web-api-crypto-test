@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace CryptoApi.Presentation.ActionFilters
 {
+    /// <summary>
+    /// Validate that the expected information from the POST body exists and are valid
+    /// </summary>
     public class ValidationFilterAttribute : IActionFilter
     {
         public void OnActionExecuted(ActionExecutedContext context)

@@ -6,7 +6,7 @@ namespace BlockCypher.Tests
     public class BlockInfoTests
     {
         [Fact]
-        public void JsonDeserialized_Succeeds()
+        public void JsonDeserializedCryptoBlock_Succeeds()
         {
 
             string url = "https://api.blockcypher.com/v1/eth/main/blocks/4682a0772e3a89201f471a6e6b30d6214c474a40fd94c7c8499a6f62b47edfe9";
@@ -33,6 +33,18 @@ namespace BlockCypher.Tests
             Assert.Equal("https://api.blockcypher.com/v1/eth/main/blocks/67232e2e36a11c35bf05e2e671968ddb84b96e1cbc7ca223d04f93731c28f2fd", block.PrevBlockUrl);
             Assert.Equal("https://api.blockcypher.com/v1/eth/main/txs/", block.TxUrl);
             Assert.Equal("https://api.blockcypher.com/v1/eth/main/blocks/4682a0772e3a89201f471a6e6b30d6214c474a40fd94c7c8499a6f62b47edfe9?txstart=20&limit=20", block.NextTxids);
+        }
+
+        [Fact]
+        public void JsonDeserializedCryptoNetwork_Succeeds()
+        {
+            string url = "https://api.blockcypher.com/v1/eth/main";
+            BlockCypherNetwork? block = BlockCypherHttpHandler.Instance.GetAsync<BlockCypherNetwork>(url).Result;
+            Assert.NotNull(block);
+            Assert.NotNull(block.Hash);
+            Assert.NotNull(block.Name);
+            Assert.NotNull(block.LatestUrl);
+            //The other values are not tested as they are different on every new block
         }
     }
 }

@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Repository.Configuration
 {
+    /// <summary>
+    /// Seeders for cryptos table
+    /// </summary>
     public class CryptoConfiguration : IEntityTypeConfiguration<Crypto>
     {
         public void Configure(EntityTypeBuilder<Crypto> builder)

@@ -2,6 +2,10 @@
 
 namespace Contracts
 {
+    /// <summary>
+    /// Base interface for all repositories
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IRepositoryBase<T>
     {
         IQueryable<T> FindAll(bool trackChanges);

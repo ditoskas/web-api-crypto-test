@@ -19,5 +19,7 @@ namespace Entities.Models
 
         [MaxLength(255, ErrorMessage = "Maximum length for the Description is 255 characters.")]
         public string? Description { get; set; }
+
+        public ICollection<CryptoNetwork>? CryptoNetworks { get; set; }
     }
 }

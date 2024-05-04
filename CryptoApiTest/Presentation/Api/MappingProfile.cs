@@ -13,6 +13,7 @@ namespace Api
             //CreateMap<Entities.Crypto, Models.CryptoForUpdateDto>();
             CreateMap<CryptoForCreationDto, Crypto>();
             CreateMap<CryptoForUpdateDto, Crypto>();
+            CreateMap<CryptoNetwork, CryptoNetworkDto>().ForMember(c => c.Symbol, opt => opt.MapFrom(x => x.Crypto.Symbol));
         }
     }
 }

@@ -19,12 +19,12 @@ builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqliteContext(RepositoryContextFactory.GetConnectionString());
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
-
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
 });
 builder.Services.AddScoped<ValidationFilterAttribute>();
+builder.Services.AddHealthChecks();
 
 builder.Services.AddControllers(config =>
 {
@@ -38,6 +38,7 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.MapHealthChecks("/health");
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

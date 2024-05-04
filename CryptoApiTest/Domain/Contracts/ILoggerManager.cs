@@ -1,5 +1,8 @@
 ﻿namespace Contracts
 {
+    /// <summary>
+    /// Logger manager interface
+    /// </summary>
     public interface ILoggerManager
     {
         void LogInfo(string message);
