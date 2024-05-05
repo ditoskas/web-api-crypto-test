@@ -17,6 +17,7 @@ builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqliteContext(RepositoryContextFactory.GetConnectionString());
+builder.Services.ConfigureResponseCaching();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.Configure<ApiBehaviorOptions>(options =>
@@ -30,6 +31,7 @@ builder.Services.AddControllers(config =>
 {
     config.ReturnHttpNotAcceptable = true;
     config.RespectBrowserAcceptHeader = true;
+    config.CacheProfiles.Add("60SecondsDuration", new CacheProfile { Duration = 60 });
 }).AddApplicationPart(typeof(CryptoApi.Presentation.AssemblyReference).Assembly);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -57,6 +59,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
     ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.All
 });
 app.UseCors("CorsPolicy");
+app.UseResponseCaching();
 
 app.MapControllers();
 

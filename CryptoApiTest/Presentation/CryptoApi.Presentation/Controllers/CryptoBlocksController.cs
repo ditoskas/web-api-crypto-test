@@ -7,6 +7,7 @@ using Utilities;
 
 namespace CryptoApi.Presentation.Controllers
 {
+    [ResponseCache(CacheProfileName = "60SecondsDuration")]
     public class CryptoBlocksController : BaseCryptoController
     {
         public CryptoBlocksController(IServiceManager service) : base(service) { }
