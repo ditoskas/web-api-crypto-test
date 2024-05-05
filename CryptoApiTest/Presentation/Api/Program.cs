@@ -17,7 +17,7 @@ builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqliteContext(RepositoryContextFactory.GetConnectionString());
-builder.Services.ConfigureResponseCaching();
+builder.Services.ConfigureOutputCaching();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.Configure<ApiBehaviorOptions>(options =>
@@ -59,7 +59,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
     ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.All
 });
 app.UseCors("CorsPolicy");
-app.UseResponseCaching();
+app.UseOutputCache();
 
 app.MapControllers();
 

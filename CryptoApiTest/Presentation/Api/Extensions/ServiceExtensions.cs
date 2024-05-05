@@ -44,6 +44,6 @@ namespace Api.Extensions
         {
             services.AddDbContext<RepositoryContext>(opts =>opts.UseSqlite(connectionString));
         }
-        public static void ConfigureResponseCaching(this IServiceCollection services) => services.AddResponseCaching();
+        public static void ConfigureOutputCaching(this IServiceCollection services) => services.AddOutputCache();
     }
 }
