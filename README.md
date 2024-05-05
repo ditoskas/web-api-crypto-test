@@ -52,6 +52,8 @@ latest url from BlockCypher or the PreviousUrl from our database, the system is 
 it normalize the data and save it in our database (Have in mind to check the rate limits as it should not been reached or you will get an exception)
 
 ## API End Points
+You can run the `Api` project on the visual studio and the swagger interface will load to test the API end points.
+
 For educational purposes the Create Read Update Delete actions have been implemented for the Cryptos table.
 Together with the main CryptoBlocks end points that can be used to filter the crypto block transactions.
 
@@ -80,3 +82,10 @@ Together with the main CryptoBlocks end points that can be used to filter the cr
 6. `Chain` - Read records that belong to specific chain
 7. `PageNumber` - The number of the page 
 8. `PageSize` - The size of each page
+
+## Alternative Implementation
+On the solution you will find also a web api project with name `Api2`. This is exactly the same functionality 
+as the `Api`, the big difference is on the implementation technique.
+On the `Api2` project the CQRS pattern using the MediatR middlweare has been used, this has been done to demonstrate a different approach for education reasons.
+
+**Note:** You can run the `Api2` project and test the end points using the swagger interface

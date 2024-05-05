@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -17,6 +17,7 @@
     <ProjectReference Include="..\..\Service\CqrsApplication\CqrsApplication.csproj" />
     <ProjectReference Include="..\..\Service\LoggerService\LoggerService.csproj" />
     <ProjectReference Include="..\..\Service\Repository\Repository.csproj" />
+    <ProjectReference Include="..\..\Utilities\Utilities.csproj" />
   </ItemGroup>
 
 </Project>

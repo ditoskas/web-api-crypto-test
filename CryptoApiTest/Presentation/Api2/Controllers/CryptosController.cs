@@ -11,7 +11,7 @@ namespace Api2.Controllers
 {
     public class CryptosController : BaseCryptoController
     {
-        public CryptosController(ISender sender) : base(sender) { }
+        public CryptosController(ISender sender, IPublisher publisher) : base(sender, publisher) { }
 
         [HttpGet(Name = "GetCryptos")]
         public async Task<IActionResult> GetCryptos()
