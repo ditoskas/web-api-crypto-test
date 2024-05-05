@@ -1,5 +1,6 @@
 ﻿using Api2.ActionFilters;
 using CqrsApplication.Commands.Cryptos;
+using CqrsApplication.Notifications.Cryptos;
 using CqrsApplication.Queries.Cryptos;
 using Entities.ApiResponses;
 using MediatR;
@@ -47,7 +48,7 @@ namespace Api2.Controllers
         [HttpDelete("{id:long}")]
         public async Task<IActionResult> DeleteCompany(long id)
         {
-            await _sender.Send(new DeleteCryptoCommand(id));
+            await _publisher.Publish(new DeleteCryptoNotification(id, false));
 
             return new OkApiResult(null, "Crypto deleted successfully.");
         }

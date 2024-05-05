@@ -8,9 +8,11 @@ namespace Api2.Controllers
     public abstract class BaseCryptoController : ControllerBase
     {
         protected readonly ISender _sender;
-        public BaseCryptoController(ISender sender)
+        protected readonly IPublisher _publisher;
+        public BaseCryptoController(ISender sender, IPublisher publisher)
         {
             _sender = sender;
+            _publisher = publisher;
         }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using Contracts;
 using CqrsApplication.Commands.Cryptos;
+using CqrsApplication.Notifications.Cryptos;
 using Entities.Exceptions;
 using MediatR;
 
 namespace CqrsApplication.Handlers.Cryptos
 {
-    public sealed class DeleteCryptoHandler : IRequestHandler<DeleteCryptoCommand, bool>
+    public sealed class DeleteCryptoHandler : INotificationHandler<DeleteCryptoNotification>
     {
         private readonly IRepositoryManager _repository;
         private readonly IMapper _mapper;
@@ -17,7 +18,7 @@ namespace CqrsApplication.Handlers.Cryptos
             _mapper = mapper;
         }
 
-        public async Task<bool> Handle(DeleteCryptoCommand request, CancellationToken cancellationToken)
+        public async Task Handle(DeleteCryptoNotification request, CancellationToken cancellationToken)
         {
             var cryptoToDelete = await _repository.Crypto.GetCryptoAsync(request.cryptoId, false);
 
@@ -28,7 +29,6 @@ namespace CqrsApplication.Handlers.Cryptos
 
             _repository.Crypto.DeleteCrypto(cryptoToDelete);
             await _repository.SaveAsync();
-            return true;
         }
     }
 }
