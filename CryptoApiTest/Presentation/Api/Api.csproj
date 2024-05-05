@@ -31,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="data\mssql\" />
     <Folder Include="internal_logs\" />
   </ItemGroup>
 

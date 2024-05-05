@@ -2,7 +2,7 @@
 using Entities.Models;
 using Shared.DataTransferObject;
 
-namespace Api
+namespace Api2
 {
     public class MappingProfile : Profile
     {

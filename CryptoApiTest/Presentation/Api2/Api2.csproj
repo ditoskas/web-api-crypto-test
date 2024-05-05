@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Contracts\Contracts.csproj" />
+    <ProjectReference Include="..\..\Service\CqrsApplication\CqrsApplication.csproj" />
+    <ProjectReference Include="..\..\Service\LoggerService\LoggerService.csproj" />
+    <ProjectReference Include="..\..\Service\Repository\Repository.csproj" />
+  </ItemGroup>
+
+</Project>
