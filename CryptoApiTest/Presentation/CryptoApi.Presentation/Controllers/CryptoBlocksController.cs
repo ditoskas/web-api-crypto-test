@@ -7,13 +7,9 @@ using Utilities;
 
 namespace CryptoApi.Presentation.Controllers
 {
-
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CryptoBlocksController : ControllerBase
+    public class CryptoBlocksController : BaseCryptoController
     {
-        private readonly IServiceManager _service;
-        public CryptoBlocksController(IServiceManager service) => _service = service;
+        public CryptoBlocksController(IServiceManager service) : base(service) { }
 
         [HttpGet(Name = "GetCryptoBlocks")]
         public async Task<IActionResult> GetCryptoBlocks([FromQuery]CryptoBlockParameters cryptoBlockParameters)

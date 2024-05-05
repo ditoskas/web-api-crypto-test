@@ -8,24 +8,47 @@ namespace Repository
     public class CryptoBlockRepository : RepositoryBase<CryptoBlock>, ICryptoBlockRepository
     {
         public CryptoBlockRepository(RepositoryContext repositoryContext) : base(repositoryContext) { }
-
+        /// <summary>
+        /// Create a new CryptoBlock record
+        /// </summary>
+        /// <param name="cryptoBlock"></param>
         public void CreateCryptoBlock(CryptoBlock cryptoBlock) => Create(cryptoBlock);
-
+        /// <summary>
+        /// Get a crypto block by its hash
+        /// </summary>
+        /// <param name="hash"></param>
+        /// <param name="trackChanges"></param>
+        /// <returns></returns>
         public async Task<CryptoBlock?> GetByHashAsync(string hash, bool trackChanges)
         {
             return await FindByCondition(c => c.Hash.Equals(hash), trackChanges).Include(t => t.Txids).Include(ti => ti.InternalTxids).FirstOrDefaultAsync();
         }
-
+        /// <summary>
+        /// Get the oldest by time crypto block that belongs to a network
+        /// </summary>
+        /// <param name="cryptoNetworkId"></param>
+        /// <param name="trackChanges"></param>
+        /// <returns></returns>
         public async Task<CryptoBlock?> GetFirstCryptoBlockOfNetworkAsync(long cryptoNetworkId, bool trackChanges)
         {
             return await FindByCondition(c => c.CryptoNetworkId.Equals(cryptoNetworkId), trackChanges).OrderBy(c => c.Time).FirstOrDefaultAsync();
         }
-
+        /// <summary>
+        /// Get the earliest by time crypto block that belongs to a network
+        /// </summary>
+        /// <param name="cryptoNetworkId"></param>
+        /// <param name="trackChanges"></param>
+        /// <returns></returns>
         public async Task<CryptoBlock?> GetLastCryptoBlockOfNetworkAsync(long cryptoNetworkId, bool trackChanges)
         {
             return await FindByCondition(c => c.CryptoNetworkId.Equals(cryptoNetworkId), trackChanges).OrderByDescending(c => c.Time).FirstOrDefaultAsync();
         }
-
+        /// <summary>
+        /// Get a collection of CryptoBlock records that feel within the given parameters
+        /// </summary>
+        /// <param name="cryptoBlockParameters"></param>
+        /// <param name="trackChanges"></param>
+        /// <returns></returns>
         public async Task<PagedList<CryptoBlock>> GetCryptoBlocksAsync(CryptoBlockParameters cryptoBlockParameters, bool trackChanges)
         {
             var cryptoBlocks = FindAll(false).Where(c => c.Height >= cryptoBlockParameters.HeightMin && c.Height <= cryptoBlockParameters.HeightMax);

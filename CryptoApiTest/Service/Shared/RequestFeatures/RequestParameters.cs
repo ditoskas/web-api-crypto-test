@@ -1,5 +1,6 @@
 ﻿namespace Shared.RequestFeatures
 {
+    //Keep the pagination data
     public abstract class RequestParameters
     {
         const int maxPageSize = 50;

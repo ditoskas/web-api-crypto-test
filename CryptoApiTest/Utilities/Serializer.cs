@@ -4,6 +4,9 @@ using System.Collections.Specialized;
 
 namespace Utilities
 {
+    /// <summary>
+    /// Wrapper class for JSON serialization
+    /// </summary>
     public static class Serializer
     {
         private static readonly JsonSerializerSettings SnakeCaseSettings = new JsonSerializerSettings
@@ -20,7 +23,7 @@ namespace Utilities
             return JsonConvert.DeserializeObject<T>(value, SnakeCaseSettings);
         }
 
-        public static string SerializeObject(object obj, JsonSerializerSettings settings = null)
+        public static string SerializeObject(object obj, JsonSerializerSettings? settings = null)
         {
             return JsonConvert.SerializeObject(obj, settings);
         }

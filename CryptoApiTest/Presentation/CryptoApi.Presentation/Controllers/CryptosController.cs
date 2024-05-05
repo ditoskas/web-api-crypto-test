@@ -6,13 +6,9 @@ using Shared.DataTransferObject;
 
 namespace CryptoApi.Presentation.Controllers
 {
-
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CryptosController : ControllerBase
+    public class CryptosController : BaseCryptoController
     {
-        private readonly IServiceManager _service;
-        public CryptosController(IServiceManager service) => _service = service;
+        public CryptosController(IServiceManager service) : base(service) { }
 
         [HttpGet(Name = "GetCryptos")]
         public async Task<IActionResult> GetCryptos()

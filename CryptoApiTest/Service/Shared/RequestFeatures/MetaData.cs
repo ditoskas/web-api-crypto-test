@@ -1,5 +1,8 @@
 ﻿namespace Shared.RequestFeatures
 {
+    /// <summary>
+    /// Keep the pagination data
+    /// </summary>
     public class MetaData
     {
         public int CurrentPage { get; set; }

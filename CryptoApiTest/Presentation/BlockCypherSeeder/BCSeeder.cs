@@ -10,6 +10,10 @@ namespace BlockCypherSeeder
     {
         /// <summary>
         /// Seed the database with the latest blocks from the network
+        /// if the action is seed, then the system is reading the oldest in time cryptoblock, it will get the previous url and populate the database recurvively 
+        /// until the number of records to read is reached
+        /// On other hand if it is update, the system will read the last block from the BlockCypher Network API and populate the database with the latest blocks
+        /// until it finds a hash that already exists in the database or the number of records to read is reached
         /// </summary>
         /// <param name="serviceManager"></param>
         /// <param name="mapper"></param>

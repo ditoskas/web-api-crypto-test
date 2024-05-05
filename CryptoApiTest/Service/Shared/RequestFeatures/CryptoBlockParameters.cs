@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Shared.RequestFeatures
+﻿namespace Shared.RequestFeatures
 {
     /// <summary>
     /// Get parameters that we can use to filter, sort and search for CryptoBlock on the API
@@ -12,11 +6,6 @@ namespace Shared.RequestFeatures
     /// </summary>
     public class CryptoBlockParameters : RequestParameters
     {
-        public CryptoBlockParameters()
-        {
-            OrderBy = "CreatedAt";
-        }
-
         public string? Hash { get; set; }
         public uint HeightMin { get; set; }
         public uint HeightMax { get; set; } = uint.MaxValue;

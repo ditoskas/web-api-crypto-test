@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Shared.RequestFeatures
+﻿namespace Shared.RequestFeatures
 {
+    /// <summary>
+    /// A list to keep a collection of items with pagination data
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class PagedList<T> : List<T>
     {
         public MetaData MetaData { get; set; }

@@ -2,6 +2,9 @@
 
 namespace Repository
 {
+    /// <summary>
+    /// Main wrapper for all repositories
+    /// </summary>
     public sealed class RepositoryManager: IRepositoryManager
     {
         private readonly RepositoryContext _repositoryContext;
